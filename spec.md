@@ -188,9 +188,10 @@
 | 属性 | 值 |
 |------|-----|
 | 高度 | `h-14 sm:h-16` (56/64px) |
-| Logo 与导航间距 | `gap-2` (8px) |
-| 导航 Pill 间距 | `gap-2` (8px) |
-| 右侧控件间距 | `gap-1 sm:gap-2` (4/8px) |
+| 元素间距 | `gap-3 sm:gap-4` (12/16px) |
+| Logo 内部间距 | `gap-2` (8px) |
+| 分类 Pill 内部间距 | `gap-2` (8px) |
+| 右侧控件内部间距 | `gap-1 sm:gap-2` (4/8px) |
 
 ### 6.3 卡片
 
@@ -224,7 +225,9 @@
 - `position: sticky; top: 0; z-index: 50`
 - 背景色: `var(--color-bg-50)`（带毛玻璃效果）
 - 底边框: `1px solid var(--color-border-200)`
-- 内部 Flex 布局: `align-items: center; justify-content: space-between`
+- 内部 Flex 布局: `align-items: center; justify-content: start`（左对齐）
+- 元素间距: `gap: 12px` (移动端) / `gap: 16px` (桌面端)
+- 布局结构: Logo → 分类 Pill → 右侧控件，全部左对齐流动
 
 **Logo 区域：**
 - SVG 图标: 24x24px, `stroke: var(--color-brand-500)`, `stroke-width: 2`
@@ -689,4 +692,4 @@ ai-toolbox-showcase/
 
 4. **卡片覆盖层设计**: 使用半透明黑色蒙版 + `backdrop-filter: blur(4px)` 确保按钮在任何图片色调下都清晰可读
 
-5. **响应式网格**: `auto-fill` + `minmax(320px, 1fr)` 在不依赖断点的情况下自适应列数
+5. **左对齐导航布局**: Logo、分类筛选、右侧控件统一左对齐，使用 `gap` 控制间距，适应不同内容宽度下的自然流动
