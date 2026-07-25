@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI工具集</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/lucide@1.7.0"></script>
+  <style id="theme-vars">
+    :root {
+      --color-brand-500: #d97757;
+      --color-brand-400: #b0683f;
+      --color-brand-600: #e08d6f;
+      --color-brand-700: #e8a98f;
+      --color-brand-300: #8a5740;
+      --color-bg-50: #1b1b19;
+      --color-bg-100: #262624;
+      --color-bg-200: #2c2c2b;
+      --color-bg-300: #30302e;
+      --color-bg-400: #3e3e38;
+      --color-bg-500: #4a4a43;
+      --color-bg-700: #6e6d68;
+      --color-bg-800: #908e84;
+      --color-text-900: #faf9f5;
+      --color-text-800: #f1f1ef;
+      --color-text-700: #d8d6cd;
+      --color-text-600: #c3c0b6;
+      --color-text-500: #b7b5a9;
+      --color-text-400: #908e84;
+      --color-text-300: #6e6d68;
+      --color-text-200: #46443b;
+      --color-text-100: #2c2c2b;
+      --color-text-50: #1b1b19;
+      --color-border-700: #908e84;
+      --color-border-600: #6e6d68;
+      --color-border-500: #52514a;
+      --color-border-400: #4a4a43;
+      --color-border-300: #3e3e38;
+      --color-border-200: #343430;
+      --color-success-500: #8ca06f;
+      --color-success-700: #bccaa8;
+      --color-error-500: #ef4444;
+      --color-dark-primary: #d97757;
+      --color-dark-card: #2c2c2b;
+      --color-dark-card-foreground: #faf9f5;
+      --color-dark-muted-foreground: #b7b5a9;
+      --color-dark-secondary: #e9e6dc;
+      --color-dark-secondary-foreground: #30302e;
+      --color-dark-accent: #1a1915;
+      --color-dark-primary-foreground: #141413;
+      --color-dark-destructive: #ef4444;
+      --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+      --shadow-md: 0 1px 3px 0 rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.1);
+      --shadow-lg: 0 1px 3px 0 rgba(0,0,0,0.1), 0 4px 6px -1px rgba(0,0,0,0.1);
+      --shadow-xl: 0 1px 3px 0 rgba(0,0,0,0.1), 0 8px 10px -1px rgba(0,0,0,0.1);
+      --shadow-2xl: 0 1px 3px 0 rgba(0,0,0,0.25);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-2xl: 24px;
+      --radius-full: 9999px;
+      --font-display: Newsreader, Georgia, ui-serif, serif;
+      --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif;
+      --font-mono: Geist Mono, ui-monospace, monospace;
+    }
+    html.light {
+      --color-bg-50: #faf9f5;
+      --color-bg-100: #f1f1ef;
+      --color-bg-200: #e9e6dc;
+      --color-bg-300: #e0ddd3;
+      --color-bg-400: #d0cdc3;
+      --color-bg-500: #b7b5a9;
+      --color-bg-700: #908e84;
+      --color-bg-800: #6e6d68;
+      --color-text-900: #1b1b19;
+      --color-text-800: #2c2c2b;
+      --color-text-700: #46443b;
+      --color-text-600: #6e6d68;
+      --color-text-500: #908e84;
+      --color-text-400: #b7b5a9;
+      --color-text-300: #d0cdc3;
+      --color-text-200: #e0ddd3;
+      --color-text-100: #f1f1ef;
+      --color-text-50: #faf9f5;
+      --color-border-700: #6e6d68;
+      --color-border-600: #52514a;
+      --color-border-500: #4a4a43;
+      --color-border-400: #3e3e38;
+      --color-border-300: #d0cdc3;
+      --color-border-200: #e0ddd3;
+      --color-dark-primary: #b0683f;
+      --color-dark-card: #ffffff;
+      --color-dark-card-foreground: #1b1b19;
+      --color-dark-muted-foreground: #6e6d68;
+      --color-dark-secondary: #46443b;
+      --color-dark-secondary-foreground: #faf9f5;
+      --color-dark-accent: #e9e6dc;
+      --color-dark-primary-foreground: #faf9f5;
+      --color-dark-destructive: #dc2626;
+      --shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px -1px rgba(0,0,0,0.06);
+      --shadow-md: 0 1px 3px 0 rgba(0,0,0,0.06), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --shadow-lg: 0 1px 3px 0 rgba(0,0,0,0.06), 0 4px 6px -1px rgba(0,0,0,0.06);
+      --shadow-xl: 0 1px 3px 0 rgba(0,0,0,0.06), 0 8px 10px -1px rgba(0,0,0,0.06);
+      --shadow-2xl: 0 1px 3px 0 rgba(0,0,0,0.12);
+    }
+  </style>
+</head>
+<body>
+  <!-- Sticky Navigation -->
+  <nav class="sticky top-0 z-50" style="background-color: var(--color-bg-50); border-bottom: 1px solid var(--color-border-200);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14 sm:h-16">
+      <!-- Logo -->
+      <div class="flex items-center gap-2 shrink-0">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-brand-500);"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <span class="text-base sm:text-lg font-semibold truncate" style="font-family: var(--font-sans); color: var(--color-text-900);">AI工具集</span>
+      </div>
+      <!-- Desktop category pills (dynamic) -->
+      <div id="desktop-categories" class="hidden md:flex items-center gap-2 mx-6 overflow-x-auto" style="scrollbar-width: none;"></div>
+      <!-- Right controls -->
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+        <div class="hidden sm:flex relative">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style="color: var(--color-text-400);"></i>
+          <input id="search-input" type="text" placeholder="搜索工具..." class="search-input">
+        </div>
+        <button id="mobile-search-btn" class="sm:hidden p-2 rounded-lg" style="color: var(--color-text-400);" aria-label="搜索">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+        <button id="theme-toggle" class="p-2 rounded-lg" style="color: var(--color-text-400); display: inline-flex; align-items: center; justify-content: center;" aria-label="切换主题">
+          <span style="position: relative; display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center;">
+            <i data-lucide="sun" class="w-5 h-5 icon-sun" style="position: absolute;"></i>
+            <i data-lucide="moon" class="w-5 h-5 icon-moon" style="position: absolute;"></i>
+          </span>
+        </button>
+        <button id="hamburger-btn" class="md:hidden p-2 rounded-lg" style="color: var(--color-text-400);" aria-label="分类菜单">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile search bar -->
+    <div id="mobile-search-bar" class="hidden sm:hidden px-4 pb-3">
+      <div class="relative">
+        <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style="color: var(--color-text-400);"></i>
+        <input id="mobile-search-input" type="text" placeholder="搜索工具..." class="search-input w-full">
+      </div>
+    </div>
+    <!-- Mobile category dropdown (dynamic) -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-3">
+      <div id="mobile-categories" class="flex gap-2 overflow-x-auto pb-1" style="scrollbar-width: none;"></div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero-section" class="relative py-16 sm:py-20 lg:py-28 overflow-hidden" style="background: linear-gradient(180deg, var(--color-bg-50) 0%, var(--color-bg-100) 100%);">
+      <canvas id="ink-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] rounded-full pointer-events-none" style="background: var(--color-brand-500); opacity: 0.05; filter: blur(100px);"></div>
+      <div class="relative max-w-3xl mx-auto px-4 text-center" style="z-index: 2;">
+        <h1 style="font-family: var(--font-display); color: var(--color-text-900); font-size: clamp(36px, 5vw, 64px); font-weight: 500; line-height: 1.2; text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+          用自然语言写出来的产品
+        </h1>
+        <p class="mt-4 text-base sm:text-lg" style="color: var(--color-text-500); font-family: var(--font-sans); max-width: 480px; margin-left: auto; margin-right: auto;">
+          每一个工具都始于一句 Prompt，终于一次点击
+        </p>
+      </div>
+    </section>
+
+    <!-- Tool Card Grid -->
+    <section class="py-12 sm:py-16 lg:py-20" style="background-color: var(--color-bg-50);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="tool-grid" class="tool-grid">
+          <!-- Cards rendered dynamically from toolData -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--color-border-200); background-color: var(--color-bg-50); padding: 24px 16px; text-align: center;">
+    <a href="https://bananayx.qzz.io" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-sans); font-size: 12px; color: var(--color-text-400); text-decoration: none;">
+      © <span id="footer-year"></span> Banana Y.X.
+    </a>
+  </footer>
+
+  <!-- Detail Modal -->
+  <div id="detail-modal" class="modal-overlay hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button id="modal-close" class="modal-close-btn" aria-label="关闭">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="modal-image-section">
+        <img id="modal-image" src="" alt="" class="modal-image">
+      </div>
+      <div class="modal-content-body">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <h2 id="modal-title" class="text-xl sm:text-2xl font-bold truncate" style="font-family: var(--font-sans); color: var(--color-text-900); min-width: 0;"></h2>
+          <span id="modal-status" class="status-badge shrink-0"></span>
+        </div>
+        <p id="modal-desc" class="mb-2 text-sm" style="color: var(--color-text-500); line-height: 1.6;"></p>
+        <div id="modal-meta" class="flex items-center gap-2 mb-1 text-xs" style="color: var(--color-text-300);"></div>
+        <div id="modal-tech" class="flex flex-wrap gap-1.5 mb-6"></div>
+        <div class="modal-section">
+          <h3 class="modal-section-heading">这个工具解决什么问题</h3>
+          <p id="modal-problem" style="color: var(--color-text-600); line-height: 1.7;"></p>
+        </div>
+        <div class="modal-section">
+          <h3 class="modal-section-heading">核心功能</h3>
+          <ul id="modal-features" class="feature-list"></ul>
+        </div>
+        <div class="modal-section">
+          <h3 class="modal-section-heading">构建故事</h3>
+          <div class="prompt-block">
+            <span class="prompt-label">Original Prompt</span>
+            <code id="modal-prompt"></code>
+          </div>
+          <div class="flex items-center gap-3 mt-4 mb-4 flex-wrap">
+            <span class="text-xs" style="color: var(--color-text-400);">AI 工具</span>
+            <span id="modal-ai-tool" class="tech-tag"></span>
+            <span class="text-xs" style="color: var(--color-text-400);">迭代</span>
+            <span id="modal-iterations" class="tech-tag"></span>
+          </div>
+          <p id="modal-story" style="color: var(--color-text-600); line-height: 1.8;"></p>
+        </div>
+        <a id="modal-cta" href="#" target="_blank" rel="noopener noreferrer" class="modal-cta-btn whitespace-nowrap">
+          在线体验
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Styles -->
+  <style>
+    @layer base {
+      body {
+        background-color: var(--color-bg-50);
+        color: var(--color-text-900);
+        font-family: var(--font-sans);
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+    }
+
+    /* Search Input */
+    .search-input {
+      width: 200px;
+      height: 36px;
+      padding: 0 12px 0 36px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border-300);
+      background-color: var(--color-bg-100);
+      color: var(--color-text-900);
+      font-size: 14px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .search-input::placeholder {
+      color: var(--color-text-400);
+    }
+    .search-input:focus {
+      border-color: var(--color-brand-500);
+      box-shadow: 0 0 0 2px rgba(217, 119, 87, 0.15);
+    }
+
+    /* Category Pills */
+    .category-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border-200);
+      background-color: transparent;
+      color: var(--color-text-500);
+      font-size: 13px;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .category-pill:hover {
+      background-color: var(--color-bg-200);
+      color: var(--color-text-700);
+    }
+    .category-pill.active {
+      background-color: var(--color-brand-500);
+      color: var(--color-dark-primary-foreground);
+      border-color: var(--color-brand-500);
+    }
+
+    /* Theme Toggle */
+    #theme-toggle {
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    }
+    #theme-toggle:hover {
+      background-color: var(--color-bg-300);
+      color: var(--color-text-700);
+    }
+    #theme-toggle:active {
+      transform: scale(0.9);
+    }
+    #theme-toggle .icon-sun,
+    #theme-toggle .icon-moon {
+      transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-origin: center center;
+      top: 50%;
+      left: 50%;
+      margin-top: -10px;
+      margin-left: -10px;
+    }
+    #theme-toggle .icon-sun {
+      transform: rotate(-90deg) scale(0);
+      opacity: 0;
+    }
+    #theme-toggle .icon-moon {
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+    }
+    html.light #theme-toggle .icon-sun {
+      transform: rotate(90deg) scale(1);
+      opacity: 1;
+    }
+    html.light #theme-toggle .icon-moon {
+      transform: rotate(-90deg) scale(0);
+      opacity: 0;
+    }
+
+    /* Tool Card Grid */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    @media (max-width: 767px) {
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Tool Card */
+    .tool-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border-300);
+      background-color: var(--color-dark-card);
+      overflow: hidden;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .tool-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    .tool-card.card-hidden {
+      display: none;
+    }
+
+    /* Card Image Wrapper */
+    .card-image-wrapper {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background-color: var(--color-bg-200);
+    }
+    .card-preview-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .tool-card:hover .card-preview-img {
+      transform: scale(1.03);
+    }
+
+    /* Card Hover Overlay */
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background-color: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .tool-card:hover .card-overlay {
+      opacity: 1;
+    }
+    .overlay-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 16px;
+      border-radius: var(--radius-sm);
+      border: none;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      background-color: var(--color-brand-500);
+      color: var(--color-dark-primary-foreground);
+      transition: background-color 0.15s ease;
+      text-decoration: none;
+    }
+    .overlay-btn:hover {
+      background-color: var(--color-brand-600);
+    }
+    .overlay-btn-secondary {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: background-color 0.2s ease, color 0.25s ease, border-color 0.2s ease;
+    }
+    .overlay-btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+    .overlay-btn-secondary.img-light {
+      color: rgba(27, 27, 25, 0.9);
+      background-color: rgba(27, 27, 25, 0.12);
+      border-color: rgba(27, 27, 25, 0.22);
+    }
+    .overlay-btn-secondary.img-light:hover {
+      background-color: rgba(27, 27, 25, 0.2);
+    }
+
+    /* Card Body */
+    .card-body {
+      padding: 16px 18px 18px;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text-900);
+      font-family: var(--font-sans);
+      min-width: 0;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: var(--color-text-500);
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+
+    /* Tech Tags */
+    .tech-tag {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      padding: 0 10px;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-bg-400);
+      color: var(--color-text-600);
+      font-size: 12px;
+      font-family: var(--font-sans);
+      white-space: nowrap;
+    }
+
+    /* Status Badges */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      padding: 0 10px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .status-live {
+      background-color: var(--color-success-500);
+      color: var(--color-dark-primary-foreground);
+    }
+    .status-dev {
+      background-color: var(--color-brand-500);
+      color: var(--color-dark-primary-foreground);
+    }
+    .status-exp {
+      background-color: var(--color-brand-400);
+      color: var(--color-text-900);
+    }
+    .status-arch {
+      background-color: var(--color-bg-500);
+      color: var(--color-text-400);
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 16px;
+      overflow-y: auto;
+    }
+    .modal-overlay.hidden {
+      display: none;
+    }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .modal-panel {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      border-radius: var(--radius-xl);
+      background-color: var(--color-bg-100);
+      box-shadow: var(--shadow-2xl);
+      overflow: hidden;
+      z-index: 1;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      border: none;
+      background-color: var(--color-bg-400);
+      color: var(--color-text-700);
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .modal-close-btn:hover {
+      background-color: var(--color-bg-500);
+    }
+    .modal-image-section {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      overflow: hidden;
+      background-color: var(--color-bg-200);
+    }
+    .modal-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .modal-content-body {
+      padding: 24px 28px 32px;
+    }
+    .modal-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border-200);
+    }
+    .modal-section-heading {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-900);
+      font-family: var(--font-sans);
+      margin-bottom: 10px;
+    }
+    .prompt-block {
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      background-color: var(--color-bg-50);
+      border: 1px solid var(--color-border-300);
+    }
+    .prompt-label {
+      display: block;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--color-text-400);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .prompt-block code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--color-text-700);
+      line-height: 1.6;
+      word-break: break-word;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .feature-list li {
+      font-size: 14px;
+      color: var(--color-text-600);
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+    }
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-brand-500);
+    }
+    .modal-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 0 24px;
+      margin-top: 24px;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-brand-500);
+      color: var(--color-dark-primary-foreground);
+      font-size: 14px;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.15s ease;
+    }
+    .modal-cta-btn:hover {
+      background-color: var(--color-brand-600);
+    }
+
+    /* Empty State */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 64px 16px;
+    }
+
+    /* Mobile responsive for modal */
+    @media (max-width: 639px) {
+      .modal-overlay {
+        padding: 16px 0;
+        align-items: flex-end;
+      }
+      .modal-panel {
+        max-width: 100%;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .modal-content-body {
+        padding: 20px 18px 28px;
+      }
+      .modal-image-section {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    /* Scrollbar hide utility */
+    .tool-grid::-webkit-scrollbar,
+    [style*="scrollbar-width: none"]::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+
+  <!-- JavaScript -->
+  <script>
+  (function() {
+    /* ===== Tool Data =====
+       每个工具对象字段：
+         name        工具名称
+         desc        一句话简介
+         category    分类标签（用于动态生成导航分类）
+         status      状态："已上线" | "开发中" | "实验性"
+         image       截图路径（相对 /img 目录，如 "img/xxx.png"）
+         demo        工具 HTML 相对路径（如 "tools/xxx.html"），"在线体验"按钮跳转用
+         tech        技术栈数组
+         prompt      构建 Prompt
+         aiTool      使用的 AI 工具
+         iterations  迭代轮数
+         problem     解决的问题
+         features    核心功能数组
+         story       构建故事
+         created     可选，创建时间，如 "2026.03"
+       上架新工具时，向 toolData 数组追加一个对象即可，导航分类与卡片会自动更新。
+    */
+    var toolData = [
+      // 上传工具后在此追加
+    ];
+
+    var currentCategory = '全部';
+
+    function esc(s) {
+      return String(s == null ? '' : s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function getStatusClass(status) {
+      switch (status) {
+        case '已上线': return 'status-live';
+        case '开发中': return 'status-dev';
+        case '实验性': return 'status-exp';
+        default: return 'status-arch';
+      }
+    }
+
+    function getUniqueCategories() {
+      var seen = {};
+      var order = [];
+      for (var i = 0; i < toolData.length; i++) {
+        var c = toolData[i].category;
+        if (c && !seen[c]) { seen[c] = true; order.push(c); }
+      }
+      return order;
+    }
+
+    function renderCategories() {
+      var cats = ['全部'].concat(getUniqueCategories());
+      var html = cats.map(function(c) {
+        return '<button class="category-pill' + (c === currentCategory ? ' active' : '') + '" data-category="' + esc(c) + '">' + esc(c) + '</button>';
+      }).join('');
+      var desktop = document.getElementById('desktop-categories');
+      var mobile = document.getElementById('mobile-categories');
+      if (desktop) desktop.innerHTML = html;
+      if (mobile) mobile.innerHTML = html;
+      bindCategoryPills();
+    }
+
+    function renderCards() {
+      var grid = document.getElementById('tool-grid');
+      if (!grid) return;
+      if (toolData.length === 0) {
+        grid.innerHTML = '<div class="empty-state">' +
+          '<p style="font-family: var(--font-sans); font-size: 15px; color: var(--color-text-500);">暂无工具上架</p>' +
+          '<p style="font-family: var(--font-sans); font-size: 13px; margin-top: 8px; color: var(--color-text-400);">工具即将上线，敬请期待</p>' +
+          '</div>';
+        return;
+      }
+      var cardsHtml = toolData.map(function(t, i) {
+        var idx = i + 1;
+        var techHtml = (t.tech || []).map(function(tag) {
+          return '<span class="tech-tag">' + esc(tag) + '</span>';
+        }).join('');
+        return '<article class="tool-card" data-category="' + esc(t.category) + '" data-name="' + esc(t.name) + '" data-desc="' + esc(t.desc) + '">' +
+          '<div class="card-image-wrapper">' +
+            '<img src="' + esc(t.image) + '" alt="' + esc(t.name) + ' 界面截图" class="card-preview-img" loading="lazy">' +
+            '<div class="card-overlay">' +
+              '<button data-dom-id="detail-' + idx + '" class="overlay-btn">查看详情</button>' +
+              '<a href="' + esc(t.demo || '#') + '" target="_blank" rel="noopener noreferrer" class="overlay-btn overlay-btn-secondary">在线体验</a>' +
+            '</div>' +
+          '</div>' +
+          '<div class="card-body">' +
+            '<div class="flex items-center justify-between gap-2">' +
+              '<h3 class="card-title truncate">' + esc(t.name) + '</h3>' +
+              '<span class="status-badge ' + getStatusClass(t.status) + ' shrink-0">' + esc(t.status) + '</span>' +
+            '</div>' +
+            '<p class="card-desc line-clamp-2">' + esc(t.desc) + '</p>' +
+            '<div class="flex flex-wrap gap-1.5 mt-3">' + techHtml + '</div>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+      grid.innerHTML = cardsHtml;
+      bindCardInteractions();
+    }
+
+    /* ===== Theme Toggle ===== */
+    var html = document.documentElement;
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function setTheme(theme) {
+      html.className = theme;
+      try { localStorage.setItem('toolbox-theme', theme); } catch(e) {}
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem('toolbox-theme'); } catch(e) {}
+    if (saved === 'light' || saved === 'dark') { setTheme(saved); }
+    else { setTheme('dark'); }
+
+    themeToggle.addEventListener('click', function() {
+      setTheme(html.className === 'dark' ? 'light' : 'dark');
+      themeToggle.style.transform = 'scale(0.85)';
+      setTimeout(function() { themeToggle.style.transform = ''; }, 150);
+    });
+
+    /* ===== Footer Year ===== */
+    var yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    /* ===== Category Filtering ===== */
+    function bindCategoryPills() {
+      var allPills = document.querySelectorAll('.category-pill');
+      allPills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          currentCategory = this.dataset.category;
+          allPills.forEach(function(p) {
+            if (p.dataset.category === currentCategory) p.classList.add('active');
+            else p.classList.remove('active');
+          });
+          filterCards();
+          var mobileMenu = document.getElementById('mobile-menu');
+          if (mobileMenu) mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    /* ===== Search ===== */
+    var searchInput = document.getElementById('search-input');
+    var mobileSearchInput = document.getElementById('mobile-search-input');
+
+    function getSearchQuery() {
+      var d = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      var m = mobileSearchInput ? mobileSearchInput.value.toLowerCase().trim() : '';
+      return d || m;
+    }
+
+    function filterCards() {
+      var query = getSearchQuery();
+      var cards = document.querySelectorAll('.tool-card');
+      cards.forEach(function(card) {
+        var matchCat = currentCategory === '全部' || card.dataset.category === currentCategory;
+        var name = (card.dataset.name || '').toLowerCase();
+        var desc = (card.dataset.desc || '').toLowerCase();
+        var matchSearch = !query || name.indexOf(query) !== -1 || desc.indexOf(query) !== -1;
+        if (matchCat && matchSearch) card.classList.remove('card-hidden');
+        else card.classList.add('card-hidden');
+      });
+    }
+
+    if (searchInput) searchInput.addEventListener('input', function() {
+      if (mobileSearchInput) mobileSearchInput.value = this.value;
+      filterCards();
+    });
+    if (mobileSearchInput) mobileSearchInput.addEventListener('input', function() {
+      if (searchInput) searchInput.value = this.value;
+      filterCards();
+    });
+
+    /* ===== Mobile Menu ===== */
+    var hamburgerBtn = document.getElementById('hamburger-btn');
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (hamburgerBtn && mobileMenu) {
+      hamburgerBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        var mobileSearchBar = document.getElementById('mobile-search-bar');
+        if (mobileSearchBar) mobileSearchBar.classList.toggle('hidden');
+      });
+    }
+
+    var mobileSearchBtn = document.getElementById('mobile-search-btn');
+    var mobileSearchBar = document.getElementById('mobile-search-bar');
+    if (mobileSearchBtn && mobileSearchBar) {
+      mobileSearchBtn.addEventListener('click', function() {
+        mobileSearchBar.classList.toggle('hidden');
+      });
+    }
+
+    /* ===== Card Interactions (Modal + Luminance) ===== */
+    var modal = document.getElementById('detail-modal');
+    var modalClose = document.getElementById('modal-close');
+    var modalBackdrop = modal.querySelector('.modal-backdrop');
+
+    function openModal(data) {
+      document.getElementById('modal-image').src = data.image || '';
+      document.getElementById('modal-image').alt = data.name || '';
+      document.getElementById('modal-title').textContent = data.name || '';
+      document.getElementById('modal-desc').textContent = data.desc || '';
+
+      var meta = document.getElementById('modal-meta');
+      meta.innerHTML = data.created ? '<span>创建时间: ' + esc(data.created) + '</span>' : '';
+
+      var techContainer = document.getElementById('modal-tech');
+      techContainer.innerHTML = (data.tech || []).map(function(tag) {
+        return '<span class="tech-tag">' + esc(tag) + '</span>';
+      }).join('');
+
+      var statusBadge = document.getElementById('modal-status');
+      statusBadge.textContent = data.status || '';
+      statusBadge.className = 'status-badge shrink-0 ' + getStatusClass(data.status);
+
+      document.getElementById('modal-problem').textContent = data.problem || '';
+
+      var featContainer = document.getElementById('modal-features');
+      featContainer.innerHTML = (data.features || []).map(function(f) {
+        return '<li>' + esc(f) + '</li>';
+      }).join('');
+
+      document.getElementById('modal-prompt').textContent = data.prompt || '';
+      document.getElementById('modal-ai-tool').textContent = data.aiTool || '';
+      document.getElementById('modal-iterations').textContent = data.iterations || '';
+      document.getElementById('modal-story').textContent = data.story || '';
+
+      var cta = document.getElementById('modal-cta');
+      cta.href = data.demo || '#';
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function bindCardInteractions() {
+      document.querySelectorAll('[data-dom-id^="detail-"]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var id = parseInt(this.dataset.domId.replace('detail-', ''));
+          var data = toolData[id - 1];
+          if (!data) return;
+          openModal(data);
+        });
+      });
+
+      document.querySelectorAll('.card-image-wrapper').forEach(function(wrapper) {
+        var img = wrapper.querySelector('.card-preview-img');
+        var btn = wrapper.querySelector('.overlay-btn-secondary');
+        if (!img || !btn) return;
+        function checkLuminance() {
+          try {
+            var c = document.createElement('canvas');
+            var size = 20;
+            c.width = size; c.height = size;
+            var ctx = c.getContext('2d');
+            ctx.drawImage(img, 0, 0, size, size);
+            var d = ctx.getImageData(0, 0, size, size).data;
+            var r = 0, g = 0, b = 0, count = 0;
+            for (var i = 0; i < d.length; i += 4) {
+              r += d[i]; g += d[i+1]; b += d[i+2]; count++;
+            }
+            var lum = (0.299 * (r/count) + 0.587 * (g/count) + 0.114 * (b/count)) / 255;
+            if (lum > 0.55) btn.classList.add('img-light');
+            else btn.classList.remove('img-light');
+          } catch(e) {}
+        }
+        if (img.complete && img.naturalWidth > 0) checkLuminance();
+        else img.addEventListener('load', checkLuminance);
+      });
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+    /* ===== Initial Render ===== */
+    renderCategories();
+    renderCards();
+  })();
+  </script>
+
+  <script>lucide.createIcons();</script>
+
+  <!-- Ink Ripple Effect for Hero Section -->
+  <script>
+  (function() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var c = document.getElementById('ink-canvas');
+      if (c) c.style.display = 'none';
+      return;
+    }
+
+    var heroSection = document.getElementById('hero-section');
+    var canvas = document.getElementById('ink-canvas');
+    if (!heroSection || !canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var particles = [];
+    var MAX_PARTICLES = 300;
+    var lastMouseX = 0;
+    var lastMouseY = 0;
+    var distAccum = 0;
+    var animId = null;
+    var lastTime = 0;
+
+    var INK_PRIMARY = [217, 119, 87];
+    var INK_SECONDARY = [176, 104, 63];
+    var INK_MIST = [142, 87, 64];
+
+    function resizeCanvas() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = heroSection.clientWidth * dpr;
+      canvas.height = heroSection.clientHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function rand(a, b) { return a + Math.random() * (b - a); }
+
+    function createTrailParticle(x, y, speed) {
+      var spread = Math.min(speed * 0.4, 30);
+      var angle = Math.random() * Math.PI * 2;
+      var dist = Math.random() * spread;
+      var px = x + Math.cos(angle) * dist;
+      var py = y + Math.sin(angle) * dist;
+      var baseR = rand(2, 5);
+      return {
+        type: 'trail',
+        x: px, y: py,
+        radius: baseR,
+        maxRadius: baseR + rand(8, 18),
+        opacity: rand(0.3, 0.7),
+        life: 0,
+        maxLife: rand(2000, 4000),
+        growSpeed: rand(4, 10),
+        colorR: INK_PRIMARY[0], colorG: INK_PRIMARY[1], colorB: INK_PRIMARY[2],
+        radiusJitter: rand(0.7, 1.3)
+      };
+    }
+
+    function createRipple(x, y) {
+      return {
+        type: 'ripple',
+        x: x, y: y,
+        radius: 2,
+        maxRadius: rand(80, 150),
+        opacity: 0.5,
+        life: 0,
+        maxLife: rand(1500, 2500),
+        expandSpeed: rand(60, 120),
+        strokeWidth: 2,
+        colorR: INK_PRIMARY[0], colorG: INK_PRIMARY[1], colorB: INK_PRIMARY[2]
+      };
+    }
+
+    function createMist(x, y) {
+      return {
+        type: 'mist',
+        x: x + rand(-60, 60),
+        y: y + rand(-60, 60),
+        radius: rand(200, 400),
+        opacity: rand(0.03, 0.08),
+        life: 0,
+        maxLife: rand(3000, 5000),
+        colorR: INK_MIST[0], colorG: INK_MIST[1], colorB: INK_MIST[2]
+      };
+    }
+
+    function addParticle(p) {
+      if (particles.length >= MAX_PARTICLES) {
+        particles.shift();
+      }
+      particles.push(p);
+    }
+
+    function spawnFromMouse(x, y, speed) {
+      var count = Math.floor(Math.max(1, speed * 0.15));
+      count = Math.min(count, 6);
+      for (var i = 0; i < count; i++) {
+        addParticle(createTrailParticle(x, y, speed));
+      }
+
+      distAccum += speed;
+      if (distAccum > rand(80, 120)) {
+        addParticle(createRipple(x, y));
+        distAccum = 0;
+      }
+
+      if (Math.random() < 0.03) {
+        addParticle(createMist(x, y));
+      }
+    }
+
+    function welcomeBurst(x, y) {
+      for (var i = 0; i < 4; i++) {
+        (function(delay) {
+          setTimeout(function() {
+            var r = createRipple(
+              x + rand(-40, 40),
+              y + rand(-30, 30)
+            );
+            r.maxRadius = rand(60, 120);
+            r.opacity = 0.35;
+            addParticle(r);
+          }, delay);
+        })(i * 120);
+      }
+    }
+
+    heroSection.addEventListener('mouseenter', function(e) {
+      var rect = heroSection.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      lastMouseX = x;
+      lastMouseY = y;
+      distAccum = 0;
+      welcomeBurst(x, y);
+    });
+
+    heroSection.addEventListener('mousemove', function(e) {
+      var rect = heroSection.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var dx = x - lastMouseX;
+      var dy = y - lastMouseY;
+      var speed = Math.sqrt(dx * dx + dy * dy);
+      if (speed > 1) {
+        spawnFromMouse(x, y, speed);
+      }
+      lastMouseX = x;
+      lastMouseY = y;
+    });
+
+    function drawParticle(p, dt) {
+      p.life += dt;
+      var progress = Math.min(p.life / p.maxLife, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+
+      if (p.type === 'trail') {
+        var currentR = Math.max(0.1, p.radius + (p.maxRadius - p.radius) * eased);
+        var alpha = p.opacity * (1 - progress);
+        if (alpha < 0.005) return false;
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',1)';
+        ctx.beginPath();
+        var segments = 8;
+        for (var i = 0; i <= segments; i++) {
+          var a = (i / segments) * Math.PI * 2;
+          var jitter = (i % 2 === 0) ? p.radiusJitter : (2 - p.radiusJitter);
+          var r = currentR * jitter;
+          r = Math.max(0.1, r);
+          if (i === 0) ctx.moveTo(p.x + Math.cos(a) * r, p.y + Math.sin(a) * r);
+          else ctx.lineTo(p.x + Math.cos(a) * r, p.y + Math.sin(a) * r);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+        return progress < 1;
+      }
+
+      if (p.type === 'ripple') {
+        var currentRippleR = Math.max(0.1, 2 + (p.maxRadius - 2) * eased);
+        var alpha2 = p.opacity * (1 - progress);
+        if (alpha2 < 0.005) return false;
+        var sw = Math.max(0.5, 2 - 1.5 * progress);
+        ctx.save();
+        ctx.globalAlpha = alpha2;
+        ctx.strokeStyle = 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',1)';
+        ctx.lineWidth = sw;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, currentRippleR, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+        return progress < 1;
+      }
+
+      if (p.type === 'mist') {
+        var fade = 1;
+        if (progress < 0.2) fade = progress / 0.2;
+        else fade = 1 - ((progress - 0.2) / 0.8);
+        var alpha3 = p.opacity * fade;
+        if (alpha3 < 0.002) return false;
+        ctx.save();
+        ctx.globalAlpha = alpha3;
+        var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, Math.max(1, p.radius));
+        grad.addColorStop(0, 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',0.6)');
+        grad.addColorStop(1, 'rgba(' + p.colorR + ',' + p.colorG + ',' + p.colorB + ',0)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(1, p.radius), 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+        return progress < 1;
+      }
+
+      return false;
+    }
+
+    function animate(timestamp) {
+      if (!lastTime) lastTime = timestamp;
+      var dt = Math.min(timestamp - lastTime, 50);
+      lastTime = timestamp;
+
+      ctx.clearRect(0, 0, heroSection.clientWidth, heroSection.clientHeight);
+
+      var alive = [];
+      for (var i = 0; i < particles.length; i++) {
+        var stillAlive = drawParticle(particles[i], dt);
+        if (stillAlive) alive.push(particles[i]);
+      }
+      particles = alive;
+
+      if (particles.length > 0) {
+        animId = requestAnimationFrame(animate);
+      } else {
+        animId = null;
+        lastTime = 0;
+      }
+    }
+
+    function startLoop() {
+      if (!animId) {
+        lastTime = 0;
+        animId = requestAnimationFrame(animate);
+      }
+    }
+
+    heroSection.addEventListener('mousemove', function() { startLoop(); }, { passive: true });
+    heroSection.addEventListener('mouseenter', function() { startLoop(); }, { passive: true });
+  })();
+  </script>
+</body>
+</html>
